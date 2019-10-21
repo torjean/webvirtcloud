@@ -49,7 +49,7 @@ def profile(request):
                 user.set_password(password1)
                 user.save()
                 return HttpResponseRedirect(request.get_full_path())
-        #UserSSHKey
+        #UserSSHKey124
         if 'keyname' in request.POST:
             keyname = request.POST.get('keyname', '')
             keypublic = request.POST.get('keypublic', '')
