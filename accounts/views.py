@@ -24,7 +24,9 @@ def profile(request):
     publickeys = UserSSHKey.objects.filter(user_id=request.user.id)
     show_profile_edit_password = settings.SHOW_PROFILE_EDIT_PASSWORD
 
+    #修改
     if request.method == 'POST':
+        #修改用户名和email
         if 'username' in request.POST:
             username = request.POST.get('username', '')
             email = request.POST.get('email', '')
@@ -32,6 +34,7 @@ def profile(request):
             user.email = email
             user.save()
             return HttpResponseRedirect(request.get_full_path())
+        #修改密码
         if 'oldpasswd' in request.POST:
             oldpasswd = request.POST.get('oldpasswd', '')
             password1 = request.POST.get('passwd1', '')
@@ -46,6 +49,7 @@ def profile(request):
                 user.set_password(password1)
                 user.save()
                 return HttpResponseRedirect(request.get_full_path())
+        #UserSSHKey
         if 'keyname' in request.POST:
             keyname = request.POST.get('keyname', '')
             keypublic = request.POST.get('keypublic', '')

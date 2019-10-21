@@ -1,3 +1,4 @@
+import pymysql as pymysql
 from django.conf.urls import include, url
 
 from instances.views import index
@@ -12,8 +13,6 @@ urlpatterns = [
     url(r'^computes/', include('computes.urls')),
     url(r'^logs/', include('logs.urls')),
     url(r'^datasource/', include('datasource.urls')),
-
-
     url(r'^console/$', console, name='console'),
     # (r'^admin/', include(admin.site.urls)),
 ]
